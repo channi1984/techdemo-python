@@ -1,13 +1,15 @@
-from flask import Flask
+from flask import Flask, render_template, redirect, url_for
 
-# Flask 클래스의 인스턴스 생성
 app = Flask(__name__)
 
-# 홈페이지에 대한 라우트 정의
 @app.route('/')
-def hello_world():
-	return 'Hello, Wolrd'
+def home():
+    return redirect(url_for('todo_list'))
 
-# 애플리케이션 실행
+# 새로운 라우트 추가
+@app.route('/todo')
+def todo_list():
+    return render_template('todo.html')
+
 if __name__ == '__main__':
-	app.run(debug=True)
+    app.run(debug=True)
