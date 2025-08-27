@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}기본 타이틀{% endblock %}</title>
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+	<!-- 글로벌 CSS -->
+	<link rel="stylesheet" href="{{url_for('static', filename='css/global.css')}}">
+	<!-- 스타일 CSS -->
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+	<header class="wrap-header">
+		<div class="area">
+			<div class="left">
+				<div class="logo">
+					<a href="/">
+						CHANNI.KR
+					</a>
+				</div>
+				<div class="menu">
+					<ul>
+						<li>
+							<a href="/">Todo List</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="right">
+				<div class="util">
+					<div class="price">
+						<span>Developer</span>
+						<span class="dolor">Channi84</span>
+					</div>
+					<div class="buy">
+						<button type="button">Button</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="wrap-con">
+		<div class="area">
+			<div class="wrap-main">
+				<div class="cart">
+					<div class="title">
+						<strong>TECHDOMO PAGE</strong>
+						<p>by Python</p>
+					</div>
+
+					<div class="size">
+						<ul>
+							<li>
+								<button type="button">button</button>
+							</li>
+							<li>
+								<button type="button">button</button>
+							</li>
+							<li>
+								<button type="button">button</button>
+							</li>
+						</ul>
+					</div>
+
+					<div class="add">
+						<button type="button">Button</button>
+					</div>
+
+					<div class="detail detail1">
+						<strong>Description</strong>
+						<p>This is Python Techdemo page.</p>
+					</div>
+				</div>
+
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

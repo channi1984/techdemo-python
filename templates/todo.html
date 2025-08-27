@@ -1,142 +1,62 @@
-<!DOCTYPE html>
-<html lang="ko">
+{% extends "base.html" %}
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>파이썬 테크데모</title>
-	<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
-	<!-- 글로벌 CSS -->
-	<link rel="stylesheet" href="{{url_for('static', filename='css/global.css')}}">
-	<!-- 스타일 CSS -->
-	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
+{% block title %}할 일 목록{% endblock %}
 
-<body>
-	<header class="wrap-header">
-		<div class="area">
-			<div class="left">
-				<div class="logo">
-					<a href="/">
-						CHANNI.KR
-					</a>
-				</div>
-				<div class="menu">
-					<ul>
-						<li>
-							<a href="/">Todo List</a>
-						</li>
-					</ul>
-				</div>
+{% block content %}
+<div class="desc">
+	<div class="wrap-todo">
+		<div class="header">
+			<div class="logo">
+				<img src="/images/ic-todo.png" alt="Todo 아이콘">
 			</div>
-
-			<div class="right">
-				<div class="util">
-					<div class="price">
-						<span>Developer</span>
-						<span class="dolor">Channi84</span>
+			<div class="search">
+				<form action="/add" method="POST">
+					<div class="input">
+						<input type="text" name="todo_item" placeholder="할 일을 입력해 주세요." required>
 					</div>
-					<div class="buy">
-						<button type="button">Button</button>
+					<div class="button">
+						<button type="submit">추가</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
-	</header>
 
-	<main class="wrap-con">
-		<div class="area">
-			<div class="wrap-main">
-				<div class="cart">
-					<div class="title">
-						<strong>TECHDOMO PAGE</strong>
-						<p>by Python</p>
-					</div>
-
-					<div class="size">
-						<ul>
-							<li>
-								<button type="button">button</button>
-							</li>
-							<li>
-								<button type="button">button</button>
-							</li>
-							<li>
-								<button type="button">button</button>
-							</li>
-						</ul>
-					</div>
-
-					<div class="add">
-						<button type="button">Button</button>
-					</div>
-
-					<div class="detail detail1">
-						<strong>Description</strong>
-						<p>This is Python Techdemo page.</p>
-					</div>
-				</div>
-
-				<div class="desc">
-					<div class="wrap-todo">
-						<div class="header">
-							<div class="logo">
-								<img src="/images/ic-todo.png" alt="Todo 아이콘">
-							</div>
-							<div class="search">
-								<form action="/add" method="POST">
-									<div class="input">
-										<input type="text" name="todo_item" placeholder="할 일을 입력해 주세요." required>
-									</div>
-									<div class="button">
-										<button type="submit">추가</button>
-									</div>
-								</form>
-							</div>
-						</div>
-
-						<div class="state">
-							<div class="total">
-								Todo
-								<span>5</span>
-							</div>
-							<div class="complete">
-								Complete
-								<span>0</span>
-							</div>
-						</div>
-
-						<div class="list">
-							<div class="work">
-								<ul>
-									{% for todo in todo_list %}
-									<li>
-										<div class="left">
-											<div class="checkbox">
-												<label class="cm-check style1">
-													<input type="checkbox">
-													<span>{{ todo }}</span>
-												</label>
-											</div>
-										</div>
-										<div class="right">
-											<div class="del">
-												<button type="button" class="btn-del">
-													삭제하기
-												</button>
-											</div>
-										</div>
-									</li>
-									{% endfor %}
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
+		<div class="state">
+			<div class="total">
+				Todo
+				<span>5</span>
+			</div>
+			<div class="complete">
+				Complete
+				<span>0</span>
 			</div>
 		</div>
-	</main>
-</body>
 
-</html>
+		<div class="list">
+			<div class="work">
+				<ul>
+					{% for todo in todo_list %}
+					<li>
+						<div class="left">
+							<div class="checkbox">
+								<label class="cm-check style1">
+									<input type="checkbox">
+									<span>{{ todo }}</span>
+								</label>
+							</div>
+						</div>
+						<div class="right">
+							<div class="del">
+								<button type="button" class="btn-del">
+									삭제하기
+								</button>
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
