@@ -83,12 +83,14 @@
 								<img src="/images/ic-todo.png" alt="Todo 아이콘">
 							</div>
 							<div class="search">
-								<div class="input">
-									<input type="text" placeholder="할 일을 입력해 주세요.">
-								</div>
-								<div class="button">
-									<button type="button">추가</button>
-								</div>
+								<form action="/add" method="POST">
+									<div class="input">
+										<input type="text" name="todo_item" placeholder="할 일을 입력해 주세요." required>
+									</div>
+									<div class="button">
+										<button type="submit">추가</button>
+									</div>
+								</form>
 							</div>
 						</div>
 
@@ -106,12 +108,13 @@
 						<div class="list">
 							<div class="work">
 								<ul>
+									{% for todo in todo_list %}
 									<li>
 										<div class="left">
 											<div class="checkbox">
 												<label class="cm-check style1">
 													<input type="checkbox">
-													<span>텍스트</span>
+													<span>{{ todo }}</span>
 												</label>
 											</div>
 										</div>
@@ -123,6 +126,7 @@
 											</div>
 										</div>
 									</li>
+									{% endfor %}
 								</ul>
 							</div>
 						</div>
