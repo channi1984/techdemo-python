@@ -82,6 +82,32 @@
 			</div>
 		</div>
 	</main>
+
+	<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const viewportTag = document.querySelector('meta[name="viewport"]');
+
+            function setViewport() {
+                const screenWidth = window.screen.width;
+                let content = '';
+
+                if (screenWidth > 1024) {
+                    content = 'width=1550, user-scalable=no';
+                } else if (screenWidth > 600) {
+                    content = 'width=1100, user-scalable=no';
+                } else {
+                    content = 'width=500, user-scalable=no';
+                }
+
+                if (viewportTag) {
+                    viewportTag.setAttribute('content', content);
+                }
+            }
+
+            setViewport();
+            window.addEventListener('resize', setViewport);
+        });
+    </script>
 </body>
 
 </html>
